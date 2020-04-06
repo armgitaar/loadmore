@@ -1,6 +1,6 @@
-import __PACKAGE__.ConsoleKernel
-import __PACKAGE__.addRoutes
-import __PACKAGE__.database.factories.UserFactory
+import com.load.more.ConsoleKernel
+import com.load.more.addRoutes
+import com.load.more.database.factories.ImageFactory
 import dev.alpas.auth.Authenticatable
 import dev.alpas.make
 import dev.alpas.ozone.from
@@ -15,12 +15,12 @@ abstract class TestBase : TestBase(ConsoleKernel::class.java) {
     }
 
     fun <T> asRandomUser(block: (user: Authenticatable) -> T): T {
-        val user = from(UserFactory(app.make()))
+        val user = from(ImageFactory(app.make()))
         becomeUser(user, true)
         return block(user)
     }
 
     fun RequestSpecification.asRandomUser() = apply {
-        becomeUser(from(UserFactory(app.make())), true)
+        becomeUser(from(ImageFactory(app.make())), true)
     }
 }

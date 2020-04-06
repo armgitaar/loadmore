@@ -1,6 +1,6 @@
-package __PACKAGE__
+package com.load.more
 
-import __PACKAGE__.controllers.WelcomeController
+import com.load.more.controllers.WelcomeController
 import dev.alpas.routing.RouteGroup
 import dev.alpas.routing.Router
 
@@ -15,7 +15,8 @@ fun Router.addRoutes() = apply {
 
 private fun RouteGroup.webRoutesGroup() {
     get("/", WelcomeController::index).name("welcome")
-    // register more web routes here
+    post("/showdata", WelcomeController::showmore).name("showmore")
+
 }
 
 private fun Router.apiRoutes() {

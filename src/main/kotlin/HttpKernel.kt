@@ -1,4 +1,4 @@
-package __PACKAGE__
+package com.load.more
 
 import dev.alpas.Application
 import dev.alpas.ServiceProvider
