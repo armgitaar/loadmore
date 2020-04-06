@@ -17,7 +17,6 @@ class WelcomeController : Controller() {
             .take(5)
             .toList()
 
-        println(images)
         call.render("welcome"){"images" to images}
     }
 
