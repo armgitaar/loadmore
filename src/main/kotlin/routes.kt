@@ -16,6 +16,8 @@ fun Router.addRoutes() = apply {
 private fun RouteGroup.webRoutesGroup() {
     get("/", WelcomeController::index).name("welcome")
     post("/showdata", WelcomeController::showmore).name("showmore")
+    get("/vue", WelcomeController::vue)
+    get("/vuemore", WelcomeController::vuemore)
 
 }
 

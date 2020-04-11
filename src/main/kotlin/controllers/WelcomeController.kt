@@ -20,6 +20,32 @@ class WelcomeController : Controller() {
         call.render("welcome"){"images" to images}
     }
 
+    fun vue(call: HttpCall) {
+
+        val images = Images
+            .latest()
+            .take(5)
+            .toList()
+
+        call.render("vue"){"images" to images}
+    }
+
+    fun vuemore(call: HttpCall){
+
+        if(call.isAjax) {
+            var num: Int = call.intParam("id") as Int
+
+            val images = Images
+                .latest()
+                .drop(num)
+                .take(5)
+                .toList()
+
+            call.reply(images)
+        }
+    }
+
+
     fun showmore(call: HttpCall){
         if(call.isAjax){
             var num: Int = call.intParam("id") as Int

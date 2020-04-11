@@ -8,9 +8,14 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 
 <body>
+
+<welcome></welcome>
+
+<h1>This example uses JQuery. <a href="/vue">Check out the Vue.js example</a></h1>
 
 <ul class="" id="image_list">
 {% for image in images %}
