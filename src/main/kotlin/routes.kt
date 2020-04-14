@@ -1,6 +1,7 @@
 package com.load.more
 
 import com.load.more.controllers.WelcomeController
+import com.load.more.controllers.VueController
 import dev.alpas.routing.RouteGroup
 import dev.alpas.routing.Router
 
@@ -16,8 +17,8 @@ fun Router.addRoutes() = apply {
 private fun RouteGroup.webRoutesGroup() {
     get("/", WelcomeController::index).name("welcome")
     post("/showdata", WelcomeController::showmore).name("showmore")
-    get("/vue", WelcomeController::vue)
-    get("/vuemore", WelcomeController::vuemore)
+    get("/vue", VueController::vue)
+    post("/vue/vue-more", VueController::vuemore)
 
 }
 

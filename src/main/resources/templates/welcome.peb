@@ -12,35 +12,34 @@
 </head>
 
 <body>
+<div id="app">
 
-<welcome></welcome>
+    <h1 class="text-lg">This example uses JQuery. <a href="/vue" class="text-lg text-blue-600 hover:text-blue-400">Check out the Vue.js example</a></h1>
 
-<h1>This example uses JQuery. <a href="/vue">Check out the Vue.js example</a></h1>
-
-<ul class="" id="image_list">
-{% for image in images %}
-  <li class="p-4 bg-white rounded-lg mb-3 flex flex-st">
-    <div class="flex">
-      <div class="self-center">
-          <a href="{{ image.src }}" target="_blank">
-            <img class="h-20 w-20 object-cover rounded-lg" src="{{ image.src }}">
-          </a>
+    <ul class="" id="image_list">
+    {% for image in images %}
+      <li class="p-4 bg-white rounded-lg mb-3 flex flex-st">
+        <div class="flex">
+          <div class="self-center">
+              <a href="{{ image.src }}" target="_blank">
+                <img class="h-20 w-20 object-cover rounded-lg" src="{{ image.src }}">
+              </a>
+          </div>
+          <div class="ml-6 pr-4 flex-1">
+            <div class="text-xl font-bold text-gray-900"> {{ image.name }} </div>
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+      <div id="load_more w-full">
+        {% csrf %}
+        <button type="button" name="show_more_button" class="font-semibold uppercase py-2 px-4 rounded-lg inline-flex" data-id="5" id="show_more_button">
+          <svg class="fill-current h-4 w-4 mr-2 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          <span>Show More</span>
+        </button>
       </div>
-      <div class="ml-6 pr-4 flex-1">
-        <div class="text-xl font-bold text-gray-900"> {{ image.name }} </div>
-      </div>
-    </div>
-  </li>
-{% endfor %}
-  <div id="load_more w-full">
-    {% csrf %}
-    <button type="button" name="show_more_button" class="font-semibold uppercase py-2 px-4 rounded-lg inline-flex" data-id="5" id="show_more_button">
-      <svg class="fill-current h-4 w-4 mr-2 mt-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-      <span>Show More</span>
-    </button>
-  </div>
-</ul>
-
+    </ul>
+</div>
 <script>
   $(document).ready(function(){
   $(document).on('click', '#show_more_button', function(){

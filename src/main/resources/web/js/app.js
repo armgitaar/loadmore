@@ -1931,9 +1931,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "ShowMore",
   data: function data() {
     return {
       images: [],
@@ -1945,12 +1943,13 @@ __webpack_require__.r(__webpack_exports__);
     showMore: function showMore() {
       var _this = this;
 
-      this.buttonText = 'Loading more images...', axios.post('/vuemore', {
+      this.buttonText = 'Loading more images...';
+      axios.post('/vue/vue-more', {
         id: this.id
       }).then(function (response) {
         var newData = [];
 
-        if (response.data != '') {
+        if (response.data.length !== 0) {
           for (var i = 0; i < response.data.length; i++) {
             newData.push(response.data[i]);
           }
@@ -2466,8 +2465,81 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {}
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _vm._l(_vm.images, function(image) {
+        return _c(
+          "li",
+          { staticClass: "p-4 bg-white rounded-lg mb-3 flex flex-st" },
+          [
+            _c("div", { staticClass: "flex" }, [
+              _c("div", { staticClass: "self-center" }, [
+                _c("a", { attrs: { href: image.src, target: "_blank" } }, [
+                  _c("img", {
+                    staticClass: "h-20 w-20 object-cover rounded-lg",
+                    attrs: { src: image.src }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "ml-6 pr-4 flex-1" }, [
+                _c("div", { staticClass: "text-xl font-bold text-gray-900" }, [
+                  _vm._v(" " + _vm._s(image.name) + " ")
+                ])
+              ])
+            ])
+          ]
+        )
+      }),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "load_more" } }, [
+        _c(
+          "button",
+          {
+            staticClass:
+              "font-semibold uppercase py-2 px-4 rounded-lg inline-flex",
+            attrs: {
+              type: "button",
+              name: "show_more_button",
+              "data-id": "5",
+              id: "show_more_button"
+            },
+            on: { click: _vm.showMore }
+          },
+          [
+            _c(
+              "svg",
+              {
+                staticClass: "fill-current h-4 w-4 mr-2 mt-1",
+                attrs: {
+                  xmlns: "http://www.w3.org/2000/svg",
+                  viewBox: "0 0 20 20"
+                }
+              },
+              [
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                  }
+                })
+              ]
+            ),
+            _vm._v("\n      " + _vm._s(_vm.buttonText) + "\n    ")
+          ]
+        )
+      ])
+    ],
+    2
+  )
+}
 var staticRenderFns = []
+render._withStripped = true
 
 
 
