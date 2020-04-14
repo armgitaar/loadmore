@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Alpas - The Rapid and Delightful Kotlin Web Framework</title>
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
+</head>
+
+<body>
+<div id="app">
+    <h1 class="text-lg">This example uses Vue.js. <a href="/" class="text-lg text-blue-600 hover:text-blue-400">Check out the JQuery example</a></h1>
+
+    <ul class="" id="image_list">
+    {% for image in images %}
+      <li class="p-4 bg-white rounded-lg mb-3 flex flex-st">
+        <div class="flex">
+          <div class="self-center">
+              <a href="{{ image.src }}" target="_blank">
+                <img class="h-20 w-20 object-cover rounded-lg" src="{{ image.src }}">
+              </a>
+          </div>
+          <div class="ml-6 pr-4 flex-1">
+            <div class="text-xl font-bold text-gray-900"> {{ image.name }} </div>
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+
+        {% csrf %}
+        <show-more></show-more>
+    </ul>
+</div>
+</body>
+
+</html>
